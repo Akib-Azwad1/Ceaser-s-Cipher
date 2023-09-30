@@ -1,0 +1,45 @@
+# logo
+from art import logo 
+print(logo) 
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+should_continue = True
+while should_continue:
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
+# For shift amount more than 26 
+  shift = shift % 26 
+
+  def ceaser (inp_direction, inp_text, inp_shift):
+    
+    if inp_direction == "encode":
+      cipher_text = ""
+      for char in inp_text:
+        if char in alphabet:
+          position = alphabet.index(letter)
+          new_position = position + inp_shift
+          cipher_text += alphabet[new_position]
+        else:
+          cipher_text += char
+      print(f"The encoded text is {cipher_text}")
+      
+    elif inp_direction == "decode":
+      cipher_text = ""
+      for letter in inp_text:
+        if letter in alphabet:
+          position = alphabet.index(letter)
+          new_position = position - inp_shift
+          cipher_text += alphabet[new_position]
+        else:
+          cipher_text += letter 
+          
+      print(f"The encoded text is {cipher_text}")
+    
+  ceaser(inp_direction=direction, inp_text=text,inp_shift=shift  )
+# run the program again? 
+
+  restart = input("Do you want to do it again? Type yes or no:,\n")
+  if restart == "no":
+    should_continue = False
+    print("Goodbye 👋")
